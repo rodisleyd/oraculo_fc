@@ -11,13 +11,13 @@ export const LEAGUES: League[] = [
 ];
 
 export const TEAMS: Team[] = [
-  { id: 'fla', name: 'Flamengo', leagueId: 'bra-a', logo: '🔴', colors: ['#C3281E', '#000000'], founded: 1895, stadium: 'Maracanã' },
-  { id: 'pal', name: 'Palmeiras', leagueId: 'bra-a', logo: '🟢', colors: ['#006437', '#FFFFFF'], founded: 1914, stadium: 'Allianz Parque' },
-  { id: 'cor', name: 'Corinthians', leagueId: 'bra-a', logo: '⚪', colors: ['#000000', '#FFFFFF'], founded: 1910, stadium: 'Neo Química Arena' },
-  { id: 'mci', name: 'Man City', leagueId: 'eng-pl', logo: '🔵', colors: ['#6CABDD', '#FFFFFF'], founded: 1880, stadium: 'Etihad Stadium' },
-  { id: 'liv', name: 'Liverpool', leagueId: 'eng-pl', logo: '🔴', colors: ['#C8102E', '#FFFFFF'], founded: 1892, stadium: 'Anfield' },
-  { id: 'rma', name: 'Real Madrid', leagueId: 'esp-ll', logo: '👑', colors: ['#FFFFFF', '#FEBE10'], founded: 1902, stadium: 'Santiago Bernabéu' },
-  { id: 'bar', name: 'Barcelona', leagueId: 'esp-ll', logo: '🔵🔴', colors: ['#004D98', '#A50044'], founded: 1899, stadium: 'Camp Nou' },
+  { id: 'fla', name: 'Flamengo', leagueId: 'bra-a', logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Flamengo_braz_logo.svg', colors: ['#C3281E', '#000000'], founded: 1895, stadium: 'Maracanã' },
+  { id: 'pal', name: 'Palmeiras', leagueId: 'bra-a', logo: 'https://upload.wikimedia.org/wikipedia/commons/1/10/Palmeiras_logo.svg', colors: ['#006437', '#FFFFFF'], founded: 1914, stadium: 'Allianz Parque' },
+  { id: 'cor', name: 'Corinthians', leagueId: 'bra-a', logo: 'https://upload.wikimedia.org/wikipedia/pt/b/b4/Corinthians_simbolo.png', colors: ['#000000', '#FFFFFF'], founded: 1910, stadium: 'Neo Química Arena' },
+  { id: 'mci', name: 'Man City', leagueId: 'eng-pl', logo: 'https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg', colors: ['#6CABDD', '#FFFFFF'], founded: 1880, stadium: 'Etihad Stadium' },
+  { id: 'liv', name: 'Liverpool', leagueId: 'eng-pl', logo: 'https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg', colors: ['#C8102E', '#FFFFFF'], founded: 1892, stadium: 'Anfield' },
+  { id: 'rma', name: 'Real Madrid', leagueId: 'esp-ll', logo: 'https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg', colors: ['#FFFFFF', '#FEBE10'], founded: 1902, stadium: 'Santiago Bernabéu' },
+  { id: 'bar', name: 'Barcelona', leagueId: 'esp-ll', logo: 'https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg', colors: ['#004D98', '#A50044'], founded: 1899, stadium: 'Camp Nou' },
 ];
 
 export const MATCHES: Match[] = [
@@ -28,21 +28,21 @@ export const MATCHES: Match[] = [
 ];
 
 export const NEWS: NewsItem[] = [
-  { 
-    id: 'n1', 
-    title: 'Flamengo negocia novo atacante', 
-    summary: 'Diretoria rubro-negra busca reforço de peso na Europa para a janela de meio de ano.', 
-    imageUrl: 'https://img-wrapper.vercel.app/image?url=https://placehold.co/600x400/black/red?text=Mercado', 
-    timestamp: '2025-05-19T10:00:00Z', 
+  {
+    id: 'n1',
+    title: 'Flamengo negocia novo atacante',
+    summary: 'Diretoria rubro-negra busca reforço de peso na Europa para a janela de meio de ano.',
+    imageUrl: 'https://img-wrapper.vercel.app/image?url=https://placehold.co/600x400/black/red?text=Mercado',
+    timestamp: '2025-05-19T10:00:00Z',
     category: 'Transferências',
     relatedTeamIds: ['fla']
   },
-  { 
-    id: 'n2', 
-    title: 'City assume liderança provisória', 
-    summary: 'Com empate no clássico, time de Guardiola dorme no topo da tabela.', 
-    imageUrl: 'https://img-wrapper.vercel.app/image?url=https://placehold.co/600x400/skyblue/white?text=Premier', 
-    timestamp: '2025-05-19T18:00:00Z', 
+  {
+    id: 'n2',
+    title: 'City assume liderança provisória',
+    summary: 'Com empate no clássico, time de Guardiola dorme no topo da tabela.',
+    imageUrl: 'https://img-wrapper.vercel.app/image?url=https://placehold.co/600x400/skyblue/white?text=Premier',
+    timestamp: '2025-05-19T18:00:00Z',
     category: 'Resumo da Rodada',
     relatedTeamIds: ['mci', 'liv']
   }
