@@ -3,7 +3,7 @@ export interface Team {
   name: string;
   logo: string;
   leagueId: string;
-  colors: [string, string];
+  colors: string[];
   founded: number;
   stadium: string;
 }
