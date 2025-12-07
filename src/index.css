@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #f4f4f5;
+    --surface: #ffffff;
+    --primary: #39FF14;
+    --primary-foreground: #000000;
+    --text-main: #18181b;
+    --text-muted: #71717a;
+    --border-muted: #e4e4e7;
+  }
+
+  .dark {
+    --background: #121212;
+    --surface: #1E1E1E;
+    --primary: #39FF14;
+    --primary-foreground: #000000;
+    --text-main: #ffffff;
+    --text-muted: #a1a1aa;
+    --border-muted: #2A2A2A;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--text-main);
+    @apply transition-colors duration-300;
+  }
+}

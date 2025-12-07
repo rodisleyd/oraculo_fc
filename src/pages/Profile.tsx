@@ -14,33 +14,34 @@ export const Profile = () => {
           U
         </div>
         <div>
-          <h1 className="text-xl font-bold text-white">Usuário Oráculo</h1>
-          <span className="text-xs bg-warning/20 text-warning px-2 py-0.5 rounded border border-warning/30">Membro Gratuito</span>
+          <h1 className="text-2xl font-bold text-text-main">Usuário Oráculo</h1>
+          <span className="text-xs font-bold px-2 py-0.5 rounded border bg-yellow-100 text-yellow-800 border-yellow-200 dark:bg-yellow-500/10 dark:text-yellow-400 dark:border-yellow-500/20">Membro Gratuito</span>
         </div>
       </header>
 
       <section>
-        <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Minhas Preferências</h2>
+        <h2 className="text-sm font-bold text-text-muted uppercase tracking-wider mb-3">Minhas Preferências</h2>
         <Card className="space-y-4">
           <div className="flex justify-between items-center pb-4 border-b border-muted">
-            <span className="text-gray-400 text-sm">Time do Coração</span>
-            <span className="text-white font-bold flex items-center gap-2">
-              {favoriteTeam?.logo} {favoriteTeam?.name || 'Não definido'}
-            </span>
+            <span className="text-text-muted text-sm">Time do Coração</span>
+            <div className="text-text-main font-bold flex items-center gap-2">
+              {favoriteTeam?.logo && <img src={favoriteTeam.logo} alt={favoriteTeam.name} className="w-6 h-6 object-contain" />}
+              {favoriteTeam?.name || 'Não definido'}
+            </div>
           </div>
           <div className="flex justify-between items-center">
-            <span className="text-gray-400 text-sm">Liga Favorita</span>
-            <span className="text-white font-bold">{favoriteLeague || 'Não definido'}</span>
+            <span className="text-text-muted text-sm">Liga Favorita</span>
+            <span className="text-text-main font-bold">{favoriteLeague?.name || 'Não definido'}</span>
           </div>
         </Card>
       </section>
 
       <section>
-        <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Configurações</h2>
+        <h2 className="text-sm font-bold text-text-muted uppercase tracking-wider mb-3">Configurações</h2>
         <div className="space-y-2">
           <Button variant="secondary" className="w-full justify-between text-sm h-12">
             <span className="flex items-center gap-2"><Bell size={16} /> Notificações</span>
-            <span className="text-xs text-gray-500">Ativado</span>
+            <span className="text-xs text-text-muted">Ativado</span>
           </Button>
           <Button variant="secondary" className="w-full justify-between text-sm h-12">
             <span className="flex items-center gap-2"><Shield size={16} /> Privacidade</span>
@@ -51,9 +52,9 @@ export const Profile = () => {
         </div>
       </section>
 
-      <Card className="bg-gradient-to-r from-primary/20 to-blue-500/20 border-primary/30">
-        <h3 className="font-bold text-white mb-1">Seja Oráculo PRO</h3>
-        <p className="text-xs text-gray-400 mb-3">Acesse estatísticas avançadas, mapas de calor e xG histórico.</p>
+      <Card className="bg-gradient-to-r from-[rgba(57,255,20,0.2)] to-blue-500/20 border-[rgba(57,255,20,0.3)]">
+        <h3 className="font-bold text-text-main mb-1">Seja Oráculo PRO</h3>
+        <p className="text-xs text-text-muted mb-3">Acesse estatísticas avançadas, mapas de calor e xG histórico.</p>
         <Button size="sm" className="w-full">Assinar Agora</Button>
       </Card>
     </div>

@@ -1,15 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Home, Search, Globe, Tv, User } from 'lucide-react';
+import { Home, Search, Globe, Tv, User, BookOpen } from 'lucide-react';
 import { cn } from '../../lib/utils';
 
 const navItems = [
   { path: '/', icon: Home, label: 'Início' },
   { path: '/explore', icon: Globe, label: 'Explorar' },
   { path: '/search', icon: Search, label: 'Busca', isPrimary: true },
+  { path: '/encyclopedia', icon: BookOpen, label: 'Raio X' },
   { path: '/live', icon: Tv, label: 'Ao Vivo' },
-  { path: '/profile', icon: User, label: 'Perfil' },
-];
+]; // Navigation items
 
 export const BottomNav = () => {
   return (

@@ -9,6 +9,9 @@ interface AppContextType {
   setFavoriteLeague: (league: League) => void;
   isOnboarded: boolean;
   completeOnboarding: () => void;
+  theme: 'light' | 'dark';
+  toggleTheme: () => void;
+  isInitialized: boolean;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -17,6 +20,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [favoriteTeam, setFavoriteTeam] = useState<Team | null>(null);
   const [favoriteLeague, setFavoriteLeague] = useState<League | null>(null);
   const [isOnboarded, setIsOnboarded] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  useEffect(() => {
+    // Load persisted theme or default to dark
+    const storedTheme = localStorage.getItem('oraculo_theme') as 'light' | 'dark' | null;
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+  }, []);
 
   useEffect(() => {
     const loadData = async () => {
@@ -29,7 +43,14 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         if (storedTeamId) {
           try {
             const team = await api.getTeamById(storedTeamId);
-            if (team) setFavoriteTeam(team);
+            if (team) {
+              setFavoriteTeam(team);
+            } else {
+              // Invalid ID (migration), reset onboarding
+              localStorage.removeItem('oraculo_fav_team');
+              localStorage.removeItem('oraculo_onboarded');
+              setIsOnboarded(false);
+            }
           } catch (error) {
             console.error("Failed to load favorite team", error);
           }
@@ -39,9 +60,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
           if (league) setFavoriteLeague(league);
         }
       }
+      setIsInitialized(true); // Mark as initialized
     };
     loadData();
   }, []);
+
+  useEffect(() => {
+    // Apply theme to HTML
+    const root = window.document.documentElement;
+    root.classList.remove('light', 'dark');
+    root.classList.add(theme);
+    localStorage.setItem('oraculo_theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
 
   const handleSetFavoriteTeam = (team: Team) => {
     setFavoriteTeam(team);
@@ -65,7 +99,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setFavoriteTeam: handleSetFavoriteTeam,
       setFavoriteLeague: handleSetFavoriteLeague,
       isOnboarded,
-      completeOnboarding
+      completeOnboarding,
+      theme,
+      toggleTheme,
+      isInitialized // Export this
     }}>
       {children}
     </AppContext.Provider>

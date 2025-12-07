@@ -9,8 +9,8 @@ export const AppLayout = () => {
   const isSearch = location.pathname === '/search';
 
   return (
-    <div className="min-h-screen bg-background text-secondary font-sans selection:bg-primary selection:text-black flex">
-      
+    <div className="min-h-screen bg-background text-text-main font-sans selection:bg-primary selection:text-black flex" style={{ backgroundColor: 'var(--background)' }}>
+
       {/* Desktop Sidebar - Hidden on Mobile */}
       <aside className="hidden md:flex w-72 flex-col fixed inset-y-0 z-50">
         <Sidebar />
@@ -25,7 +25,7 @@ export const AppLayout = () => {
         <div className={cn(
           "w-full mx-auto min-h-screen relative",
           // Remove max-w-md constraint, use max-w-7xl for desktop containment
-          "max-w-md md:max-w-7xl", 
+          "max-w-md md:max-w-7xl",
           // Add horizontal padding on desktop
           "md:p-8"
         )}>

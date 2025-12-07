@@ -26,6 +26,8 @@ export interface Match {
   time: string; // "45+2'", "16:00", "FT"
   date: string;
   leagueId: string;
+  homeTeam?: Team;
+  awayTeam?: Team;
 }
 
 export interface Player {

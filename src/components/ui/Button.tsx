@@ -7,17 +7,17 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: 'sm' | 'md' | 'lg';
 }
 
-export const Button: React.FC<ButtonProps> = ({ 
-  className, 
-  variant = 'primary', 
-  size = 'md', 
-  children, 
-  ...props 
+export const Button: React.FC<ButtonProps> = ({
+  className,
+  variant = 'primary',
+  size = 'md',
+  children,
+  ...props
 }) => {
   const variants = {
-    primary: 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-neon font-bold',
-    secondary: 'bg-surface text-secondary hover:bg-surface/80 border border-muted',
-    outline: 'bg-transparent border border-primary text-primary hover:bg-primary/10',
+    primary: 'bg-primary text-primary-foreground hover:opacity-90 shadow-neon font-bold',
+    secondary: 'bg-surface text-secondary hover:bg-surface border border-muted',
+    outline: 'bg-transparent border border-primary text-primary hover:bg-[rgba(57,255,20,0.1)]',
     ghost: 'bg-transparent text-secondary hover:bg-white/5',
   };
 

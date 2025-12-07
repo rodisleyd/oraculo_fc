@@ -41,23 +41,25 @@ export const Onboarding = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
+        className="flex flex-col items-center"
       >
-        <h1 className="text-3xl font-bold text-white mb-2">
+        <img src="/logo.png" alt="Oraculo FC" className="w-24 h-24 object-contain drop-shadow-[0_0_15px_rgba(57,255,20,0.6)] mb-6" />
+        <h1 className="text-3xl font-bold text-text-main mb-2 text-center">
           Oraculo <span className="text-primary">FC</span>
         </h1>
-        <p className="text-gray-400 mb-8">Configure seu universo do futebol.</p>
+        <p className="text-text-muted mb-8">Configure seu universo do futebol.</p>
 
         {step === 1 && (
           <div className="space-y-4">
-            <h2 className="text-xl text-white font-semibold">Qual seu time do coração?</h2>
+            <h2 className="text-xl text-text-main font-semibold">Qual seu time do coração?</h2>
             <div className="relative mb-4">
-              <Search className="absolute left-3 top-3 text-gray-500" size={18} />
+              <Search className="absolute left-3 top-3 text-text-muted" size={18} />
               <input
                 type="text"
                 placeholder="Buscar time..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-surface border border-muted rounded-lg py-2.5 pl-10 pr-4 text-white focus:border-primary focus:outline-none"
+                className="w-full bg-surface border border-muted rounded-lg py-2.5 pl-10 pr-4 text-text-main focus:border-primary focus:outline-none placeholder:text-text-muted"
               />
             </div>
             <div className="grid grid-cols-1 gap-3 max-h-60 overflow-y-auto">
@@ -65,11 +67,10 @@ export const Onboarding = () => {
                 <Card
                   key={team.id}
                   onClick={() => handleTeamSelect(team)}
-                  className={`cursor-pointer transition-all flex items-center justify-between ${selectedTeamId === team.id ? 'border-primary bg-primary/10' : 'hover:border-gray-600'}`}
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-2xl">{team.logo}</span>
-                    <span className="font-medium text-white">{team.name}</span>
+                    <img src={team.logo} alt={team.name} className="w-8 h-8 object-contain" />
+                    <span className="font-medium text-text-main">{team.name}</span>
                   </div>
                   {selectedTeamId === team.id && <Check className="text-primary" size={20} />}
                 </Card>
@@ -80,17 +81,17 @@ export const Onboarding = () => {
 
         {step === 2 && (
           <div className="space-y-4">
-            <h2 className="text-xl text-white font-semibold">Qual liga você não perde?</h2>
+            <h2 className="text-xl text-text-main font-semibold">Qual liga você não perde?</h2>
             <div className="grid grid-cols-1 gap-3">
               {leagues.map((league) => (
                 <Card
                   key={league.id}
                   onClick={() => handleLeagueSelect(league)}
-                  className={`cursor-pointer transition-all flex items-center justify-between ${selectedLeagueId === league.id ? 'border-primary bg-primary/10' : 'hover:border-gray-600'}`}
+                  className={`cursor-pointer transition-all flex items-center justify-between ${selectedLeagueId === league.id ? 'border-primary bg-[rgba(57,255,20,0.1)]' : 'hover:border-gray-400'}`}
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-xl">{league.logo}</span>
-                    <span className="font-medium text-white">{league.name}</span>
+                    <span className="font-medium text-text-main">{league.name}</span>
                   </div>
                   {selectedLeagueId === league.id && <Check className="text-primary" size={20} />}
                 </Card>
@@ -99,7 +100,10 @@ export const Onboarding = () => {
             <Button
               className="w-full mt-8"
               disabled={!selectedLeagueId}
-              onClick={completeOnboarding}
+              onClick={() => {
+                completeOnboarding();
+                window.location.href = '/'; // Force reload/redirect to ensure AppRoutes catches the new state
+              }}
             >
               Começar
             </Button>

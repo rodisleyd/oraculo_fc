@@ -5,14 +5,14 @@ interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   variant?: 'default' | 'outline' | 'secondary' | 'danger' | 'warning';
 }
 
-export const Badge: React.FC<BadgeProps> = ({ 
-  className, 
-  variant = 'default', 
-  children, 
-  ...props 
+export const Badge: React.FC<BadgeProps> = ({
+  className,
+  variant = 'default',
+  children,
+  ...props
 }) => {
   const variants = {
-    default: 'bg-primary/10 text-primary border border-primary',
+    default: 'bg-[rgba(57,255,20,0.1)] text-primary border border-primary',
     outline: 'bg-transparent text-white border border-muted',
     secondary: 'bg-surface text-gray-400 border border-muted',
     danger: 'bg-danger/10 text-danger border border-danger',
@@ -20,12 +20,12 @@ export const Badge: React.FC<BadgeProps> = ({
   };
 
   return (
-    <span 
+    <span
       className={cn(
         'px-2 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider font-bold',
         variants[variant],
         className
-      )} 
+      )}
       {...props}
     >
       {children}

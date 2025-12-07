@@ -2,7 +2,7 @@ import { Team, League, Match } from '../types';
 import { mockApi, LEAGUES, TEAMS } from '../data/mock';
 
 const API_TOKEN = import.meta.env.VITE_API_TOKEN;
-const BASE_URL = 'https://api.football-data.org/v4';
+const BASE_URL = '/api';
 
 const headers = {
     'X-Auth-Token': API_TOKEN || '',
@@ -63,20 +63,44 @@ export const api = {
     getTeams: async (): Promise<Team[]> => {
         if (!API_TOKEN) return mockApi.getTeams();
 
-        // Example: Fetching teams from Premier League (PL) as a default
-        const cacheKey = 'api_teams_PL';
+        // Fetching teams from major leagues: Brazil, England, Spain, Italy, Germany, France, Portugal, Libertadores
+        const cacheKey = 'api_teams_GLOBAL_v2';
         const cached = getFromCache<Team[]>(cacheKey);
         if (cached) return cached;
 
+        const leagues = [
+            { code: 'BSA', country: 'bra-bsa' }, // Brasileirão
+            { code: 'PL', country: 'eng-pl' },   // Premier League
+            { code: 'PD', country: 'esp-pd' },   // La Liga
+            { code: 'SA', country: 'ita-sa' },   // Serie A
+            { code: 'BL1', country: 'ger-bl1' }, // Bundesliga
+            { code: 'FL1', country: 'fra-fl1' }, // Ligue 1
+            { code: 'PPL', country: 'por-ppl' }, // Primeira Liga
+            { code: 'CLI', country: 'south-america-cli' }, // Libertadores
+        ];
+
         try {
-            const response = await fetch(`${BASE_URL}/competitions/PL/teams`, { headers });
-            if (!response.ok) throw new Error('Failed to fetch teams');
-            const data = await response.json();
-            const teams = data.teams.map((t: any) => mapTeam(t, 'eng-pl'));
-            setCache(cacheKey, teams, CACHE_DURATION.STATIC);
-            return teams;
+            const responses = await Promise.all(
+                leagues.map(l => fetch(`${BASE_URL}/competitions/${l.code}/teams`, { headers }))
+            );
+
+            let allTeams: Team[] = [];
+
+            for (let i = 0; i < responses.length; i++) {
+                const response = responses[i];
+                const league = leagues[i];
+                if (response.ok) {
+                    const data = await response.json();
+                    const teams = (data.teams || []).map((t: any) => mapTeam(t, league.country));
+                    allTeams = [...allTeams, ...teams];
+                }
+            }
+
+            setCache(cacheKey, allTeams, CACHE_DURATION.STATIC);
+            return allTeams;
         } catch (error) {
             console.error('API Error:', error);
+            // Fallback to mock but try to fetch what we can
             return mockApi.getTeams();
         }
     },
@@ -90,6 +114,7 @@ export const api = {
 
         try {
             const response = await fetch(`${BASE_URL}/teams/${id}`, { headers });
+            if (response.status === 400 || response.status === 404) return undefined;
             if (!response.ok) throw new Error('Failed to fetch team');
             const data = await response.json();
             const team = mapTeam(data);
@@ -131,7 +156,11 @@ export const api = {
     },
 
     search: async (query: string) => {
-        // Search is complex with this API, falling back to mock or implementing basic local filtering on cached data
-        return mockApi.search(query);
+        const teams = await api.getTeams();
+        const q = query.toLowerCase();
+        return {
+            teams: teams.filter(t => t.name.toLowerCase().includes(q)),
+            leagues: [] // We can add league search later if needed
+        };
     }
 };

@@ -8,15 +8,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#121212",
-        surface: "#1E1E1E",
-        primary: "#39FF14", // Electric Green
-        "primary-foreground": "#000000",
-        secondary: "#E0E0E0", // Neutral Gray
-        accent: "#007BFF", // Vibrant Blue
-        warning: "#FFD700", // Gold
-        danger: "#FF3B30", // Red
-        muted: "#2A2A2A",
+        background: "var(--background)",
+        surface: "var(--surface)",
+        primary: "var(--primary)",
+        "primary-foreground": "var(--primary-foreground)",
+        secondary: "#E0E0E0",
+        accent: "#007BFF",
+        warning: "#FFD700",
+        danger: "#FF3B30",
+        muted: "var(--border-muted)",
+        "text-main": "var(--text-main)",
+        "text-muted": "var(--text-muted)",
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'], // Assuming Inter or similar clean sans
