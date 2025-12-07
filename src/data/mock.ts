@@ -3,28 +3,28 @@ import { Team, League, Match, NewsItem, Player } from '../types';
 // --- MOCK DATABASE ---
 
 export const LEAGUES: League[] = [
-  { id: 'bra-a', name: 'Brasileirão Série A', country: 'Brasil', continent: 'América do Sul', logo: '🇧🇷' },
+  { id: 'bra-bsa', name: 'Brasileirão Série A', country: 'Brasil', continent: 'América do Sul', logo: '🇧🇷' },
   { id: 'eng-pl', name: 'Premier League', country: 'Inglaterra', continent: 'Europa', logo: '🏴󠁧󠁢󠁥󠁮󠁧󠁿' },
-  { id: 'esp-ll', name: 'La Liga', country: 'Espanha', continent: 'Europa', logo: '🇪🇸' },
-  { id: 'libertadores', name: 'Libertadores', country: 'América do Sul', continent: 'América do Sul', logo: '🏆' },
-  { id: 'ucl', name: 'Champions League', country: 'Europa', continent: 'Europa', logo: '🇪🇺' },
+  { id: 'esp-pd', name: 'La Liga', country: 'Espanha', continent: 'Europa', logo: '🇪🇸' },
+  { id: 'south-america-cli', name: 'Libertadores', country: 'América do Sul', continent: 'América do Sul', logo: '🏆' },
+  { id: 'eur-cl', name: 'Champions League', country: 'Europa', continent: 'Europa', logo: '🇪🇺' },
 ];
 
 export const TEAMS: Team[] = [
-  { id: 'fla', name: 'Flamengo', leagueId: 'bra-a', logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Flamengo_braz_logo.svg', colors: ['#C3281E', '#000000'], founded: 1895, stadium: 'Maracanã' },
-  { id: 'pal', name: 'Palmeiras', leagueId: 'bra-a', logo: 'https://upload.wikimedia.org/wikipedia/commons/1/10/Palmeiras_logo.svg', colors: ['#006437', '#FFFFFF'], founded: 1914, stadium: 'Allianz Parque' },
-  { id: 'cor', name: 'Corinthians', leagueId: 'bra-a', logo: 'https://upload.wikimedia.org/wikipedia/pt/b/b4/Corinthians_simbolo.png', colors: ['#000000', '#FFFFFF'], founded: 1910, stadium: 'Neo Química Arena' },
+  { id: 'fla', name: 'Flamengo', leagueId: 'bra-bsa', logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2e/Flamengo_braz_logo.svg', colors: ['#C3281E', '#000000'], founded: 1895, stadium: 'Maracanã' },
+  { id: 'pal', name: 'Palmeiras', leagueId: 'bra-bsa', logo: 'https://upload.wikimedia.org/wikipedia/commons/1/10/Palmeiras_logo.svg', colors: ['#006437', '#FFFFFF'], founded: 1914, stadium: 'Allianz Parque' },
+  { id: 'cor', name: 'Corinthians', leagueId: 'bra-bsa', logo: 'https://upload.wikimedia.org/wikipedia/pt/b/b4/Corinthians_simbolo.png', colors: ['#000000', '#FFFFFF'], founded: 1910, stadium: 'Neo Química Arena' },
   { id: 'mci', name: 'Man City', leagueId: 'eng-pl', logo: 'https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg', colors: ['#6CABDD', '#FFFFFF'], founded: 1880, stadium: 'Etihad Stadium' },
   { id: 'liv', name: 'Liverpool', leagueId: 'eng-pl', logo: 'https://upload.wikimedia.org/wikipedia/en/0/0c/Liverpool_FC.svg', colors: ['#C8102E', '#FFFFFF'], founded: 1892, stadium: 'Anfield' },
-  { id: 'rma', name: 'Real Madrid', leagueId: 'esp-ll', logo: 'https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg', colors: ['#FFFFFF', '#FEBE10'], founded: 1902, stadium: 'Santiago Bernabéu' },
-  { id: 'bar', name: 'Barcelona', leagueId: 'esp-ll', logo: 'https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg', colors: ['#004D98', '#A50044'], founded: 1899, stadium: 'Camp Nou' },
+  { id: 'rma', name: 'Real Madrid', leagueId: 'esp-pd', logo: 'https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg', colors: ['#FFFFFF', '#FEBE10'], founded: 1902, stadium: 'Santiago Bernabéu' },
+  { id: 'bar', name: 'Barcelona', leagueId: 'esp-pd', logo: 'https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg', colors: ['#004D98', '#A50044'], founded: 1899, stadium: 'Camp Nou' },
 ];
 
 export const MATCHES: Match[] = [
-  { id: 'm1', homeTeamId: 'fla', awayTeamId: 'pal', homeScore: null, awayScore: null, status: 'SCHEDULED', time: '16:00', date: '2025-05-20', leagueId: 'bra-a' },
+  { id: 'm1', homeTeamId: 'fla', awayTeamId: 'pal', homeScore: null, awayScore: null, status: 'SCHEDULED', time: '16:00', date: '2025-05-20', leagueId: 'bra-bsa' },
   { id: 'm2', homeTeamId: 'liv', awayTeamId: 'mci', homeScore: 1, awayScore: 1, status: 'LIVE', time: "67'", date: '2025-05-19', leagueId: 'eng-pl' },
-  { id: 'm3', homeTeamId: 'rma', awayTeamId: 'bar', homeScore: 3, awayScore: 1, status: 'FINISHED', time: 'FT', date: '2025-05-18', leagueId: 'esp-ll' },
-  { id: 'm4', homeTeamId: 'cor', awayTeamId: 'fla', homeScore: 0, awayScore: 2, status: 'FINISHED', time: 'FT', date: '2025-05-10', leagueId: 'bra-a' },
+  { id: 'm3', homeTeamId: 'rma', awayTeamId: 'bar', homeScore: 3, awayScore: 1, status: 'FINISHED', time: 'FT', date: '2025-05-18', leagueId: 'esp-pd' },
+  { id: 'm4', homeTeamId: 'cor', awayTeamId: 'fla', homeScore: 0, awayScore: 2, status: 'FINISHED', time: 'FT', date: '2025-05-10', leagueId: 'bra-bsa' },
 ];
 
 export const NEWS: NewsItem[] = [
