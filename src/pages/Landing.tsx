@@ -5,16 +5,21 @@ import { ArrowRight, Sparkles, Shield, Search, Zap, Trophy, ChevronRight, Mail, 
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
 
+import { submitLead } from '../services/leads';
+
 export const Landing = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [joined, setJoined] = useState(false);
 
-    const handleJoinWaitlist = (e: React.FormEvent) => {
+    const handleJoinWaitlist = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!email) return;
+
         setJoined(true);
-        // In a real app, this would send to Supabase/ConvertKit
+        // Fire and forget for demo speed
+        await submitLead(email);
+
         setTimeout(() => {
             // Optional: Auto redirect or let them click
         }, 1500);
