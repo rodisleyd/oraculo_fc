@@ -1,0 +1,18 @@
+{
+    "profile": {
+        "title": "Minhas Preferências",
+        "userExample": "Usuário Oráculo",
+        "memberStatus": "Membro Gratuito",
+        "settings": "Configurações",
+        "favoriteTeam": "Time do Coração",
+        "favoriteLeague": "Liga Favorita",
+        "notDefined": "Não definido",
+        "notifications": "Notificações",
+        "privacy": "Privacidade",
+        "logout": "Sair",
+        "activated": "Ativado",
+        "proTitle": "Seja Oráculo PRO",
+        "proDescription": "Acesse estatísticas avançadas, mapas de calor e xG histórico.",
+        "subscribe": "Assinar Agora"
+    }
+}

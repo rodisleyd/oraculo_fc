@@ -1,0 +1,18 @@
+{
+    "profile": {
+        "title": "My Preferences",
+        "userExample": "Oracle User",
+        "memberStatus": "Free Member",
+        "settings": "Settings",
+        "favoriteTeam": "Favorite Team",
+        "favoriteLeague": "Favorite League",
+        "notDefined": "Not defined",
+        "notifications": "Notifications",
+        "privacy": "Privacy",
+        "logout": "Logout",
+        "activated": "On",
+        "proTitle": "Be Oracle PRO",
+        "proDescription": "Access advanced stats, heatmaps and historical xG.",
+        "subscribe": "Subscribe Now"
+    }
+}
